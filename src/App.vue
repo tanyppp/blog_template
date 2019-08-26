@@ -18,6 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 @import './scss/index.scss';
+@import './scss/var.scss';
 .App {
   color: $red;
   font-size: 32px;

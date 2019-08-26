@@ -18,7 +18,7 @@ module.exports = smart(baseConfig, {
   output: {
     path: DistPath,
     filename: 'js/bundle.[name].[hash:8].js',
-    chunkFilename: 'js/bundle.[id].[hash:8].js'
+    chunkFilename: 'js/bundle.[name].[id].[hash:8].js'
   },
   optimization: {
     minimizer: [
@@ -96,7 +96,7 @@ module.exports = smart(baseConfig, {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash:8].css',
-      chunkFilename: 'css/[id].[hash:8].css'
+      chunkFilename: 'css/[name].[id].[hash:8].css'
     })
   ]
 });
