@@ -17,7 +17,7 @@ const devConfig = smart(baseConfig, {
   output: {
     path: DistPath,
     filename: 'js/bundle.[name].js',
-    chunkFilename: 'js/bundle.[name].[id].js'
+    chunkFilename: 'js/bundle.[id].js'
   },
   devServer: {
     historyApiFallback: {
@@ -75,7 +75,7 @@ const devConfig = smart(baseConfig, {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-      chunkFilename: 'css/[name].[id].css',
+      chunkFilename: 'css/[id].css',
     }),
     new webpack.NamedModulesPlugin(), // 热更新时会log出更新的模块路径
     new webpack.HotModuleReplacementPlugin()
