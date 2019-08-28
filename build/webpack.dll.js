@@ -6,7 +6,8 @@ module.exports = {
   mode: 'production',
   entry: {
     vue: ['vue', 'vue-router', 'vuex'],
-    element_ui: ['element-ui']
+    element_ui: ['element-ui'],
+    polyfill: ['@babel/polyfill']
   },
   output: {
     filename: '[name].dll.js',
