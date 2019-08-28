@@ -13,7 +13,7 @@ module.exports = {
     filename: '[name].dll.js',
     path: path.resolve('dist', 'js', 'dll'),
     library: '_dll_[name]',
-    libraryTarget: 'commonjs'
+    libraryTarget: 'var'
   },
   plugins: [
     new webpack.DllPlugin({
