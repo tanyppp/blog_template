@@ -79,11 +79,17 @@ module.exports = {
     new webpack.DefinePlugin({
       mode: JSON.stringify(process.env.NODE_ENV)
     }),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['!js/dll/*']
+    }),
     new CopyWebpackPlugin([{
       from: StaticPath,
-      to: DistPath
+      to: DistPath + '/static'
     }]),
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve('dist', 'js', 'dll', 'vue.manifest.json'),
+      manifest: path.resolve('dist', 'js', 'dll', 'element_ui.manifest.json')
+    }),
     new WebpackDeepScopeAnalysisPlugin()
   ]
 }

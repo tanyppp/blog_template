@@ -9,7 +9,7 @@ const { smart } = require("webpack-merge");
 
 const { RootPath, DistPath } = require("./path.config");
 
-module.exports = smart(baseConfig, {
+const proConfig = smart(baseConfig, {
   mode: "production",
   output: {
     path: DistPath,
@@ -109,3 +109,5 @@ module.exports = smart(baseConfig, {
     })
   ]
 });
+
+module.exports = proConfig;
