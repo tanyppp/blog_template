@@ -5,7 +5,20 @@ const path = require('path');
 const fs = require('fs');
 // const devConfig = require(path.resolve(__dirname, './webpack.dev'));
 
-const { isBuiltDll } = require(path.resolve(__dirname, './dll.config.json'));
+let { isBuiltDll } = require(path.resolve(__dirname, './dll.config.json'));
+
+try {
+  const arr = fs.readdirSync(path.resolve(__dirname, '../dist/js'));
+  if (arr.includes('dll')) {
+    isBuiltDll = true;
+  } else {
+    isBuiltDll = false;
+    writeDllConf(path.resolve(__dirname, './dll.config.json'), { isBuiltDll });
+  }
+} catch(e) {
+  isBuiltDll = false;
+  writeDllConf(path.resolve(__dirname, './dll.config.json'), { isBuiltDll });
+}
 
 if (isBuiltDll) {
   // 直接构建
@@ -20,14 +33,18 @@ if (isBuiltDll) {
     if (err) {
       throw err;
     }
-    console.log(chalk.green('build dll success!'))
-    fs.writeFile(path.resolve(__dirname, './dll.config.json'), JSON.stringify(dllJson, null, '\t'), (err) => {
-      if (err) {
-        throw err;
-      }
-      // runDev();
-    });
+    console.log(chalk.green('build dll success!'));
+    writeDllConf(path.resolve(__dirname, './dll.config.json'), dllJson);
   })
+}
+
+function writeDllConf(path, value) {
+  fs.writeFile(path, JSON.stringify(value, null, '\t'), (err) => {
+    if (err) {
+      throw err;
+    }
+    // runDev();
+  });
 }
 
 // function runDev() {
