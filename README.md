@@ -14,7 +14,7 @@ npm run dev
 
 ## 3.构建项目
 ```bash
-npm run build
+npm run build:pro
 ```
 
 ## 4.功能介绍

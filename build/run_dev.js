@@ -25,11 +25,16 @@ if (isBuiltDll) {
   // runDev();
 } else {
   // 先构建dll
+  const ora = require('ora');
+  const spinner = new ora('building dll...');
   const dllConfig = require(path.resolve(__dirname, './webpack.dll'));
   const dllJson = {
     isBuiltDll: true
   };
+  spinner.color = 'blue';
+  spinner.start();
   webpack(dllConfig, (err) => {
+    spinner.stop();
     if (err) {
       throw err;
     }
