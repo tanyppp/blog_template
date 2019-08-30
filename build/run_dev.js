@@ -31,6 +31,7 @@ if (isBuiltDll) {
   const dllJson = {
     isBuiltDll: true
   };
+  dllConfig.mode = process.env.NODE_ENV;
   spinner.color = 'blue';
   spinner.start();
   webpack(dllConfig, (err) => {

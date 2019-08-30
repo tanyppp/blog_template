@@ -3,7 +3,6 @@ const webpack = require('webpack');
 
 // 动态链接库
 module.exports = {
-  mode: 'production',
   entry: {
     vue: ['vue', 'vue-router', 'vuex'],
     element_ui: ['element-ui'],

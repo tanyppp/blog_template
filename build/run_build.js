@@ -28,10 +28,11 @@ if (isBuiltDll) {
 } else {
   // 先构建dll
   const dllConfig = require(path.resolve(__dirname, './webpack.dll'));
-  spinner.start('building dll...');
   const dllJson = {
     isBuiltDll: true
   };
+  dllConfig.mode = process.env.NODE_ENV;
+  spinner.start('building dll...');
   webpack(dllConfig, (err) => {
     if (err) {
       spinner.fail();
