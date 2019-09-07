@@ -3,14 +3,14 @@ const webpack = require('webpack');
 
 // 动态链接库
 module.exports = {
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   entry: {
     vue: ['vue', 'vue-router', 'vuex'],
     element_ui: ['element-ui'],
     polyfill: ['@babel/polyfill']
   },
   output: {
-    filename: '[name].dll.js',
+    filename: `[name].dll.js`,
     path: path.resolve('dist', 'js', 'dll'),
     library: '_dll_[name]',
     libraryTarget: 'var'
