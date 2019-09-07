@@ -13,11 +13,9 @@ try {
     isBuiltDll = true;
   } else {
     isBuiltDll = false;
-    writeDllConf(path.resolve(__dirname, './dll.config.json'), { isBuiltDll });
   }
 } catch(e) {
   isBuiltDll = false;
-  writeDllConf(path.resolve(__dirname, './dll.config.json'), { isBuiltDll });
 }
 
 if (isBuiltDll) {
@@ -28,10 +26,6 @@ if (isBuiltDll) {
   const ora = require('ora');
   const spinner = new ora('building dll...');
   const dllConfig = require(path.resolve(__dirname, './webpack.dll'));
-  const dllJson = {
-    isBuiltDll: true
-  };
-  dllConfig.mode = process.env.NODE_ENV;
   spinner.color = 'blue';
   spinner.start();
   webpack(dllConfig, (err) => {
@@ -40,19 +34,8 @@ if (isBuiltDll) {
       throw err;
     }
     console.log(chalk.green('build dll success!'));
-    writeDllConf(path.resolve(__dirname, './dll.config.json'), dllJson);
   })
 }
-
-function writeDllConf(path, value) {
-  fs.writeFile(path, JSON.stringify(value, null, '\t'), (err) => {
-    if (err) {
-      throw err;
-    }
-    // runDev();
-  });
-}
-
 // function runDev() {
 //   const server = new WebpackDevServer(webpack(devConfig), devConfig.devServer);
 //   server.listen(devConfig.devServer.port || null);
