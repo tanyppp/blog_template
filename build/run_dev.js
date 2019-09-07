@@ -5,8 +5,6 @@ const path = require('path');
 const fs = require('fs');
 // const devConfig = require(path.resolve(__dirname, './webpack.dev'));
 
-let { isBuiltDll } = require(path.resolve(__dirname, './dll.config.json'));
-
 try {
   const arr = fs.readdirSync(path.resolve(__dirname, '../dist/js'));
   if (arr.includes('dll')) {

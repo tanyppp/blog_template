@@ -4,7 +4,6 @@ const ora = require('ora');
 const path = require('path');
 const fs = require('fs');
 const prodConfig = require(path.resolve(__dirname, './webpack.prod'));
-let { isBuiltDll } = require(path.resolve(__dirname, './dll.config.json'));
 
 const spinner = new ora();
 spinner.color = 'blue';
